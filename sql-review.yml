@@ -25,9 +25,9 @@ sql-review:
     - FILES=$(git diff-tree --no-commit-id --diff-filter=AM --name-only -r origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME -r $CI_COMMIT_SHA -- '*.sql')
     - echo $FILES
     # TODO: change the url
-    - curl -o ./tmp/sql-review.sh "https://raw.githubusercontent.com/ed-bytebase/sql-review-gitlab-ci/$VERSION/sql-review.sh"
+    - curl -o ./sql-review.sh "https://raw.githubusercontent.com/ed-bytebase/sql-review-gitlab-ci/$VERSION/sql-review.sh"
     # https://gitlab.com/gitlab-org/gitlab-runner/-/issues/2672
-    - bash ./tmp/sql-review.sh --files="$FILES" --api="$SQL_REVIEW_API"
+    - bash ./sql-review.sh --files="$FILES" --api="$SQL_REVIEW_API"
   artifacts:
     when: always
     reports:
